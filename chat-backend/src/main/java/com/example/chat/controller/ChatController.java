@@ -57,11 +57,11 @@ public class ChatController {
     );
 }
     @EventListener
-public void handleSessionConnected(SessionConnectedEvent event) {
+    public void handleSessionConnected(SessionConnectedEvent event) {
     StompHeaderAccessor accessor = StompHeaderAccessor.wrap(event.getMessage());
     System.out.println("Connected session: " + accessor.getUser());
 }
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://localhost:4201")
     @GetMapping("/chatgetMessages")
     public List<ChatMessageEntity> fetchMessage(){
         List<ChatMessageEntity> messages = chatMessageRepository.findAll();
@@ -74,4 +74,6 @@ public void handleSessionConnected(SessionConnectedEvent event) {
         )).collect(Collectors.toList());
 
     }
+
+    
 }
